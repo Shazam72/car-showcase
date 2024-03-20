@@ -5,6 +5,7 @@ import { Group } from "three";
 import CarContext from "../../contexts/car";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { useFrame } from "@react-three/fiber";
 
 gsap.registerPlugin(useGSAP);
 
@@ -13,12 +14,25 @@ export function Car(props: CarProps) {
   const wheelRef = useRef<Group>(null);
   const globalGroup = useRef<Group>(null);
   const doorRef = useRef<Group>(null);
-  const { carBodyColor, wheelColor, wheelJointColor, updater } =
-    useContext(CarContext);
-
-  const onWheelsClick = () => {};
+  const {
+    carBodyColor,
+    wheelColor,
+    wheelJointColor,
+    inDoorColor,
+    passengerCompartmentColor,
+    run,
+    updater,
+  } = useContext(CarContext);
 
   const onCarDoorClick = () => updater({ inCar: true });
+
+  useFrame((state) => {
+    if (run && wheelRef.current) {
+      wheelRef.current.children.forEach((mesh) => {
+        mesh.rotation.x = state.clock.getElapsedTime();
+      });
+    }
+  });
 
   return (
     <>
@@ -108,12 +122,12 @@ export function Car(props: CarProps) {
                 color={carBodyColor}
               />
             </mesh>
-            <mesh
-              castShadow
-              receiveShadow
-              geometry={nodes.Object_20.geometry}
-              material={materials.lavoiturecsr2_textured2a__spec}
-            />
+            <mesh castShadow receiveShadow geometry={nodes.Object_20.geometry}>
+              <meshStandardMaterial
+                {...materials.lavoiturecsr2_textured2a__spec}
+                color={inDoorColor}
+              />
+            </mesh>
           </group>
           <mesh
             castShadow
@@ -139,12 +153,12 @@ export function Car(props: CarProps) {
             geometry={nodes.Object_18.geometry}
             material={materials.lavoiturecsr2_light__env_50_spec}
           />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Object_19.geometry}
-            material={materials.lavoiturecsr2_textured2a__spec}
-          />
+          <mesh castShadow receiveShadow geometry={nodes.Object_19.geometry}>
+            <meshStandardMaterial
+              {...materials.lavoiturecsr2_textured2a__spec}
+              color={passengerCompartmentColor}
+            />
+          </mesh>
           <mesh
             castShadow
             receiveShadow
@@ -157,7 +171,7 @@ export function Car(props: CarProps) {
             geometry={nodes.Object_22.geometry}
             material={materials.lavoiturecsr2_textureda__env_50_spec}
           />
-          <group ref={wheelRef} onClick={onWheelsClick}>
+          <group ref={wheelRef}>
             <mesh castShadow receiveShadow geometry={nodes.Object_23.geometry}>
               <meshStandardMaterial
                 {...materials.lavoiturecsr2_wheel__env_50_spec}

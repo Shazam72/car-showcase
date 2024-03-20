@@ -24,17 +24,20 @@ export type PinkableMeshProps = {
   material?: Material | Material[];
 };
 
-
 export type TweaksValue = {
   carBodyColor?: string;
   wheelColor?: string;
   wheelJointColor?: string;
+  passengerCompartmentColor?: string;
+  outDoorColor?: string;
+  inDoorColor?: string;
   inCar?: boolean;
+  wheelShow?: boolean;
+  run?: boolean
 };
 
 export type CarContextValue = TweaksValue & {
   updater: (newValue: TweaksValue) => void;
 };
-
 
 export type TCarGroupChild = Mesh<BufferGeometry, MeshStandardMaterial>;

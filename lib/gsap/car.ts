@@ -6,11 +6,14 @@ export const getInCarTl = (orbitRef: RefObject<OrbitControls | null>) => {
   if (!orbitRef?.current) return null;
   const tl = gsap.timeline({ paused: true });
 
-  tl.to(orbitRef.current.object.position, {
-    x: -0.3,
-    y: 0.3,
-    z: 0.5,
+  tl.to(orbitRef.current, {
+    autoRotate: false,
   })
+    .to(orbitRef.current.object.position, {
+      x: -0.3,
+      y: 0.3,
+      z: 0.5,
+    },"<")
     .to(orbitRef.current.target, {
       x: -0.26,
       y: 0.27,

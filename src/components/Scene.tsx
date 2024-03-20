@@ -1,7 +1,4 @@
-import {
-  Environment,
-  OrbitControls,
-} from "@react-three/drei";
+import { Environment, OrbitControls } from "@react-three/drei";
 import { OrbitControls as ThreeStdOrbitControls } from "three-stdlib";
 import { Car } from "./Car";
 import { MutableRefObject, useContext } from "react";
@@ -21,7 +18,7 @@ function Scene({
       />
       <Car scale={0.03} castShadow receiveShadow />
       <OrbitControls
-        autoRotate
+        // autoRotate
         ref={orbitRef}
         enableZoom
         maxPolarAngle={Math.PI / 2}

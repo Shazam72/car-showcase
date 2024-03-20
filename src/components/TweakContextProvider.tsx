@@ -7,6 +7,10 @@ function CarContextProvider({ children }: { children: ReactNode }) {
     wheelColor: "#000000",
     carBodyColor: "#ffffff",
     wheelJointColor: "#ffffff",
+    passengerCompartmentColor: "#ffffff",
+    inDoorColor: "#ffffff",
+    wheelShow: false,
+    run: false,
   });
   const updater = (newValue: TweaksValue) =>
     setTweaksValue((v) => ({ ...v, ...newValue }));

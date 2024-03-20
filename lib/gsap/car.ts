@@ -8,12 +8,17 @@ export const getInCarTl = (orbitRef: RefObject<OrbitControls | null>) => {
 
   tl.to(orbitRef.current, {
     autoRotate: false,
+    minDistance: 0.1,
   })
-    .to(orbitRef.current.object.position, {
-      x: -0.3,
-      y: 0.3,
-      z: 0.5,
-    },"<")
+    .to(
+      orbitRef.current.object.position,
+      {
+        x: -0.3,
+        y: 0.3,
+        z: 0.5,
+      },
+      "<"
+    )
     .to(orbitRef.current.target, {
       x: -0.26,
       y: 0.27,

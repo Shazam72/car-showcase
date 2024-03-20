@@ -45,7 +45,7 @@ const BooleanActionBtn = ({
   return (
     <button
       type="button"
-      className={`font-bold bg-${
+      className={`font-bold  bg-${
         value ? "red" : "blue"
       }-500 px-5 py-2 text-white rounded-full`}
       onClick={onClick}

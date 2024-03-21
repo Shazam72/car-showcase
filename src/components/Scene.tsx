@@ -28,7 +28,7 @@ function Scene({
         <Car scale={0.03} castShadow receiveShadow />
       </Stage>
       <OrbitControls
-        // autoRotate
+        autoRotate
         ref={orbitRef}
         enableZoom
         maxPolarAngle={Math.PI / 2}

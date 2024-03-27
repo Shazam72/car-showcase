@@ -139,16 +139,7 @@ function Canvas() {
         )}
       </div>
       <div className="absolute flex flex-col gap-2 top-1/2 translate-y-[-50%] right-2">
-        <BooleanActionBtn
-          value={wheelShow as boolean}
-          name="Pneux"
-          contextProperty="wheelShow"
-        />
-        <BooleanActionBtn
-          value={run as boolean}
-          name="Rouler"
-          contextProperty="run"
-        />
+      
       </div>
     </div>
   );

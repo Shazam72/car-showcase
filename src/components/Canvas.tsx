@@ -27,34 +27,6 @@ const TweakInput = ({
   );
 };
 
-const BooleanActionBtn = ({
-  name,
-  contextProperty,
-  value,
-}: {
-  name: string;
-  contextProperty: string;
-  value: boolean;
-}) => {
-  const { updater } = useContext(CarContext);
-
-  const onClick = () => {
-    updater({ [contextProperty]: !value });
-  };
-
-  return (
-    <button
-      type="button"
-      className={`font-bold  bg-${
-        value ? "red" : "blue"
-      }-500 px-5 py-2 text-white rounded-full`}
-      onClick={onClick}
-    >
-      {name}
-    </button>
-  );
-};
-
 function Canvas() {
   const orbitRef = useRef<OrbitControls | null>(null);
   const getIntoCarTl = useRef<gsap.core.Timeline | null>(null);

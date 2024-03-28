@@ -12,7 +12,7 @@ function Stage({ children }: { children: ReactNode }) {
         <meshBasicMaterial side={DoubleSide} />
       </mesh>
 
-      <mesh position-x={10} position-y={10 - 1.1} rotation-y={Math.PI / 2}>
+      <mesh position-z={-10} position-y={10 - 1.1}>
         <planeGeometry args={[20, 20]} />
         <meshBasicMaterial side={DoubleSide} />
       </mesh>

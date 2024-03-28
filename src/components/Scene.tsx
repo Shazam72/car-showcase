@@ -5,8 +5,7 @@ import {
 } from "@react-three/drei";
 import { OrbitControls as ThreeStdOrbitControls } from "three-stdlib";
 import { Car } from "./Car";
-import { MutableRefObject, useContext } from "react";
-import CarContext from "../../contexts/car";
+import { MutableRefObject } from "react";
 import Stage from "./Stage";
 
 function Scene({
@@ -14,18 +13,16 @@ function Scene({
 }: {
   orbitRef: MutableRefObject<ThreeStdOrbitControls | null>;
 }) {
-  const { inCar } = useContext(CarContext);
-
   return (
     <>
-      <PerspectiveCamera makeDefault position={[0, 0, -10]} />
+      <PerspectiveCamera makeDefault position={[10, 0, 0]} />
       <ambientLight intensity={0.25} />
       <Environment
-        background={inCar}
+        background
         files={"textures/env/modern_buildings.hdr"}
       />
       <Stage>
-        <Car scale={0.03} castShadow receiveShadow />
+        <Car rotation-y={-Math.PI/ 2} scale={0.03} castShadow receiveShadow />
       </Stage>
       <OrbitControls
         autoRotate

@@ -21,8 +21,8 @@ const TweakInput = ({
 
   return (
     <div className="flex flex-col items-center">
-      <label className="font-bold">{labelName}</label>
-      <input {...props} onChange={onChange} />
+      <label className="text-center">{labelName}</label>
+      <input {...props} className="" onChange={onChange} />
     </div>
   );
 };
@@ -64,8 +64,6 @@ function Canvas() {
     carBodyColor,
     wheelColor,
     wheelJointColor,
-    wheelShow,
-    run,
     passengerCompartmentColor,
     inDoorColor,
   } = useContext(CarContext);
@@ -93,7 +91,7 @@ function Canvas() {
       >
         Sortir
       </div>
-      <div className="absolute flex gap-5 bottom-0 left-1/2 translate-x-[-50%] translate-y-[-50%]">
+      <div className="absolute flex items-end gap-5 bottom-1 left-1/2 translate-x-[-50%] translate-y-[-50%]">
         {!inCar && (
           <>
             <TweakInput
@@ -139,7 +137,7 @@ function Canvas() {
         )}
       </div>
       <div className="absolute flex flex-col gap-2 top-1/2 translate-y-[-50%] right-2">
-        <BooleanActionBtn
+        {/* <BooleanActionBtn
           value={wheelShow as boolean}
           name="Pneux"
           contextProperty="wheelShow"
@@ -148,8 +146,9 @@ function Canvas() {
           value={run as boolean}
           name="Rouler"
           contextProperty="run"
-        />
+        /> */}
       </div>
+      <small className="fixed bottom-0 left-1/2 translate-x-[-50%] text-center">Built by <a href="https://legrandwebservices.com" className="underline text-white">Legrand WEB Services</a></small>
     </div>
   );
 }
